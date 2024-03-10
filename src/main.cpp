@@ -162,6 +162,7 @@ void main() {
 		1);
 	glMemoryBarrier(GL_SHADER_STORAGE_BARRIER_BIT); // Ensure memory writes are finished
 	auto t1 = duration_cast<microseconds>(high_resolution_clock::now() - s1);
+	glFinish();
 	std::cout << "It took " << t1.count() << " microseconds to execute the compute shader\n";
 
 	auto s2 = high_resolution_clock::now();
@@ -176,6 +177,7 @@ void main() {
 		1);
 
 	glMemoryBarrier(GL_SHADER_STORAGE_BARRIER_BIT); // Ensure memory writes are finished
+	glFinish();
 	auto t1t = duration_cast<microseconds>(high_resolution_clock::now() - s1t);
 	std::cout << "It took " << t1t.count() << " microseconds to execute the compute shader (2nd pass)\n";
 
